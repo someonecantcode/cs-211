@@ -5,7 +5,7 @@
 
 ## Stacks
 
-Head Index is **starts at 1**
+Head Index is **starts at 1** when using search.
 
 
 ![example stack](stack.png)
@@ -38,3 +38,29 @@ System.out.println(myStack.search(9)); // -1 NOT FOUND
 | `pop()`      | `E` |
 | `push(E item)`     | `E` |
 | `search(Object o)`     | `int` |
+
+## Queue
+
+Can be implemented using Arrays or LinkedLists. You can't search.
+
+![example stack](stack.png)
+
+```java
+Queue<String> q = new LinkedList<>();
+
+q.add("A");
+q.add("B");
+System.out.println(q); // [A, B]
+
+System.out.printlnt(q.remove()); // A
+System.out.println(q.peek()); // B
+```
+
+| Methods                | Return  |
+| ---------------------- | ------- |
+| `add(E e)`      | `boolean`   |
+| `peek()`      | `E` |
+| `remove(E item)`     | `E` |
+| `poll()`      | `E` |
+| `offer(Object o)`     | `boolean` |
+| `elememt()`     | `E` |
