@@ -52,7 +52,7 @@ If you want to download dropbox files, just change the ending to `dl=1`.
 
 * Access these dropbox links and download the files:
     * [folder of books](https://www.dropbox.com/scl/fo/2gntl33vey6671orky3xd/AP8MrMpcJdHK5E5WDyHd4jw?rlkey=he61lsezyq5sh899e7fdbwjnl&e=1&st=t36oahze&dl=0)
-    * [epub](https://www.dropbox.com/scl/fi/7eh7996ru1h4lj6y2q1a3/Building-Java-Programs_-A-Back-to-Basics-Approach-5th-Stuart-Reges-Marty-Stepp-5-2019-08-14-Pearson-Education-Canada-9780135471944-ee079de11f36606d8a698e870d8d079d-Anna-s-Archive.epub?rlkey=45x2sdxzu88qqxsej5kgnfs3c&st=qqb2yc7h&dl=0)
+    * [epub](https://www.dropbox.com/scl/fi/7eh7996ru1h4lj6y2q1a3/Building-Java-Programs_-A-Back-to-Basics-Approach-5th-Stuart-Reges-Marty-Stepp-5-2019-08-14-Pearson-Education-Canada-9780135471944-ee079de11f36606d8a698e870d8d079d-Anna-s-Archive.epub?rlkey=45x2sdxzu88qqxsej5kgnfs3c&st=qqb2yc7h&dl=1)
     * [pdf](https://www.dropbox.com/scl/fi/9910x1gti4oq7es0kz2b8/Building-Java-Programs_-A-Back-to-Basics-Approach-5th-Stuart-Reges-Marty-Stepp-5-2019-08-14-Pearson-Education-Canada-9780135471944-8309c429d208380c2131bb4f0e1fa094-Anna-s-Archive.pdf?rlkey=jk6qqza5pwbbwzhhy5lwumi0z&st=vvpnabl4&dl=1)
 * Use one of the links and search up the book at your own descretion: https://www.reddit.com/r/Piracy/wiki/megathread/books/
 
