@@ -21,7 +21,10 @@ class StarData {
     Color color;
 }
 
-public class Stars extends JFrame {
+public class Stars extends JFrame implements Runnable {
+
+    private Thread starThread;
+    private boolean running = false;
 
     public static ArrayList<StarData> myStar = new ArrayList<>();
     static int width = 800;
@@ -70,6 +73,33 @@ public class Stars extends JFrame {
             }
 
             myStar.add(s);
+        }
+    }
+
+    public synchronized void start() {
+        running = true;
+        starThread = new Thread(this);
+        starThread.start();
+    }
+
+    public synchronized void stop() {
+        running = false;
+        try {
+            starThread.join();
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
+    }
+
+    @Override
+    public void run() {
+        while (running) {
+            paint();
+            try {
+                Thread.sleep(32); // org 16
+            } catch (InterruptedException e) {
+                e.printStackTrace();
+            }
         }
     }
 
@@ -127,11 +157,6 @@ public class Stars extends JFrame {
         }
         g.dispose();
         bs.show();
-        try {
-            Thread.sleep(20);      // pause 20/1000 second
-        } catch (Exception exc) {
-        }
-        paint();
     }
 
     public void drawStar(Graphics g, int sx, int sy, int size, int angle, int angleSpeed) {
