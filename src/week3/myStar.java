@@ -6,12 +6,12 @@ public class myStar {
     	
     	int screenWidth =1200;
     	int screenHeight= 800;
-    	int howManyStars = 500;
-    	int starMaxSize = 70;
+    	int howManyStars = 10;
+    	int starMaxSize = 100;
   
-        Stars SR = new Stars(screenWidth, screenHeight, howManyStars, starMaxSize); // none recurcive
+        // Stars SR = new Stars(screenWidth, screenHeight, howManyStars, starMaxSize); // none recurcive
         
-    	// Stars_Recursion SR = new Stars_Recursion(screenWidth, screenHeight, howManyStars, starMaxSize);
+    	 Stars_Recursion SR = new Stars_Recursion(screenWidth, screenHeight, howManyStars, starMaxSize);
        
         SR.start(); 
     }

@@ -2,10 +2,10 @@ package week3;
 
 import java.awt.Color;
 import java.awt.Graphics;
+import java.awt.Polygon;
 import java.awt.image.BufferStrategy;
-
-import javax.swing.JFrame;
 import java.util.*;
+import javax.swing.JFrame;
 
 class StarData {
 
@@ -152,19 +152,19 @@ public class Stars extends JFrame implements Runnable {
                 myStar.get(i).angle = 0;
             }
 
-            drawStar(g, myStar.get(i).x, myStar.get(i).y, myStar.get(i).size, myStar.get(i).angle, myStar.get(i).angleSpeed);
+            drawStar(g, myStar.get(i).x, myStar.get(i).y, myStar.get(i).size, myStar.get(i).angle);
 
         }
         g.dispose();
         bs.show();
     }
 
-    public void drawStar(Graphics g, int sx, int sy, int size, int angle, int angleSpeed) {
+    public void drawStar(Graphics g, int sx, int sy, int size, int angle) {
         int[] xCoords = new int[10];
         int[] yCoords = new int[10];
         int ang = 90 - angle;
         double rad;
-        double PI = 3.14159;
+        double PI = Math.PI;
 
         for (int i = 0; i < 10; i++) {
             if (i % 2 == 0) {
@@ -178,13 +178,10 @@ public class Stars extends JFrame implements Runnable {
             xCoords[i] += sx;
             yCoords[i] += sy;
         }
-        g.fillPolygon(xCoords, yCoords, 10);
+        // g.fillPolygon(xCoords, yCoords, 10);
 
-        // appy recursion here
+        Polygon p = new Polygon(xCoords, yCoords, 10);
+        g.drawPolygon(p);
     }
 
-    // public static void main(String[] args) {
-    //     createStar();
-    //     new Stars();
-    // }
 }
