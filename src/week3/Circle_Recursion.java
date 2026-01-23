@@ -1,5 +1,6 @@
 package week3;
 
+import java.awt.Color;
 import java.awt.Graphics;
 
 public class Circle_Recursion extends Circle {
@@ -12,6 +13,12 @@ public class Circle_Recursion extends Circle {
         if (radius < 1){
             return;
         }
+
+        int R = rand.nextInt(255);
+        int G = rand.nextInt(255);
+        int B = rand.nextInt(255);
+
+        g.setColor(new Color(R, G, B));
 
         design2(g, cx, cy, radius, angle, angleSpeed);
     }

@@ -1,6 +1,7 @@
 package combine;
 
 import java.awt.Graphics;
+import java.awt.Color;
 
 public class Shape_Recursion extends AllShapes {
 
@@ -10,10 +11,11 @@ public class Shape_Recursion extends AllShapes {
 
     @Override // i just need to add ,depth param and change the exit condition
     public void drawStar(Graphics g, int sx, int sy, int size, int angle) {
-        if (size < 20){
+        if (size < 15){
             return;
         }
 
+        setRandomColor(g);
         super.drawStar(g, sx, sy, size, angle);
 
         int ang = 90 - angle;
@@ -45,6 +47,7 @@ public class Shape_Recursion extends AllShapes {
             return;
         }
 
+        setRandomColor(g);
         super.drawTriangle(g, tx, ty, size, angle);
         for (int i = 0; i < 3; i++) {
             int xCoords = 0;
@@ -66,11 +69,20 @@ public class Shape_Recursion extends AllShapes {
             return;
         }
 
+        setRandomColor(g);
         super.drawCircle(g, cx, cy, radius);
         this.drawCircle(g, cx, cy+radius, radius/2);
         this.drawCircle(g, cx, cy-radius, radius/2);
         this.drawCircle(g, cx+radius, cy, radius/2);
         this.drawCircle(g, cx-radius, cy, radius/2);
+    }
+
+    private void setRandomColor(Graphics g){
+        int R = rand.nextInt(255);
+        int G = rand.nextInt(255);
+        int B = rand.nextInt(255);
+
+        g.setColor(new Color(R, G, B));
     }
 
 }

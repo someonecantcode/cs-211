@@ -1,6 +1,5 @@
 package combine;
 
-import java.awt.Shape;
 
 public class myShape {
 	
@@ -9,7 +8,7 @@ public class myShape {
     	int screenWidth = 1200;
     	int screenHeight= 800;
     	int howManyShapes = 10;
-    	int shapeMaxSize = 25;
+    	int shapeMaxSize = 100;
   
         // AllShapes SR = new AllShapes(screenWidth, screenHeight, howManyShapes, shapeMaxSize); // none recurcive
         

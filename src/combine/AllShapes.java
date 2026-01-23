@@ -117,8 +117,12 @@ public class AllShapes extends JFrame implements Runnable {
         for (int i = 0; i < myShape.size(); i++) {
             g.setColor(myShape.get(i).color);
 
-            if (myShape.get(i).size > 40 || myShape.get(i).size < 1) {
-                myShape.get(i).zoom *= -1;
+            if (myShape.get(i).size > AllShapes.starSize) { // if zoom doesnt get out of threshold, it'll bug out
+                myShape.get(i).zoom = -Math.abs(myShape.get(i).zoom);
+            }
+
+            if (myShape.get(i).size < 1) {
+                myShape.get(i).zoom = Math.abs(myShape.get(i).zoom);
             }
             myShape.get(i).size += myShape.get(i).zoom;
 
@@ -152,12 +156,19 @@ public class AllShapes extends JFrame implements Runnable {
                 myShape.get(i).angle = 0;
             }
 
-            drawStar(g, myShape.get(i).x+100, myShape.get(i).y, myShape.get(i).size, myShape.get(i).angle);
-            drawTriangle(g, myShape.get(i).x-100, myShape.get(i).y, myShape.get(i).size, myShape.get(i).angle);
-            drawCircle(g, myShape.get(i).x, myShape.get(i).y, myShape.get(i).size);
+            drawAShape(g, myShape.get(i).x, myShape.get(i).y, myShape.get(i).size, myShape.get(i).angle, i);
         }
         g.dispose();
         bs.show();
+    }
+
+    private void drawAShape(Graphics g, int sx, int sy, int size, int angle, int index){
+        System.out.println(size);
+        switch(index % 3) {
+            case 0 -> drawStar(g, sx, sy, size, angle);
+            case 1 -> drawTriangle(g, sx, sy, size, angle);
+            case 2 -> drawCircle(g, sx, sy, size);
+        }
     }
 
     public void drawStar(Graphics g, int sx, int sy, int size, int angle) {

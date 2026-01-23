@@ -1,6 +1,7 @@
 package week3;
 
 import java.awt.Graphics;
+import java.awt.Color;
 
 public class Stars_Recursion extends Stars {
 
@@ -14,6 +15,12 @@ public class Stars_Recursion extends Stars {
             return;
         }
 
+        int R = rand.nextInt(255);
+        int G = rand.nextInt(255);
+        int B = rand.nextInt(255);
+
+        g.setColor(new Color(R, G, B));
+        
         design1(g, sx, sy, size, angle);
     }
 
