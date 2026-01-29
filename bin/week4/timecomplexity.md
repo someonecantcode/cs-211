@@ -2,6 +2,7 @@
 >
 > Based on number of statements being run. NOT CPU TIME
 
+* We remove constants and coefficients.
 
 ```java
 void ex1(int n) { 
