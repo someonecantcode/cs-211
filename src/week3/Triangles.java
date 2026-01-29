@@ -7,8 +7,6 @@ import java.awt.image.BufferStrategy;
 import java.util.*;
 import javax.swing.JFrame;
 
-import combine.AllShapes;
-
 class TriangleData {
     int x;
     int y;
@@ -37,7 +35,7 @@ public class Triangles extends JFrame implements Runnable {
     static int R, G, B;
 
     public Triangles(int screenWidth, int screenHeight, int howManyTriangle, int triangleSize) {
-        super("CS211- Fall 2025");
+        super("CS211 Triangles - Winter 2026");
         setBounds(100, 100, width, height);
         setResizable(false);
         setVisible(true);

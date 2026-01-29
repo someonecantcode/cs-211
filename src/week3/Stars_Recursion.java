@@ -1,7 +1,7 @@
 package week3;
 
-import java.awt.Graphics;
 import java.awt.Color;
+import java.awt.Graphics;
 
 public class Stars_Recursion extends Stars {
 
@@ -11,7 +11,7 @@ public class Stars_Recursion extends Stars {
 
     @Override // i just need to add ,depth param and change the exit condition
     public void drawStar(Graphics g, int sx, int sy, int size, int angle) {
-        if (size < 10){
+        if (size < 20){
             return;
         }
 

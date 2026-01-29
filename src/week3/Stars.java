@@ -36,7 +36,7 @@ public class Stars extends JFrame implements Runnable {
     static int R, G, B;
 
     public Stars(int screenWidth, int screenHeight, int howManyStars, int starSize) {
-        super("CS211- Fall 2025");
+        super("CS211 Stars - Winter 2026");
         setBounds(100, 100, width, height);
         setResizable(false);
         setVisible(true);

@@ -36,7 +36,7 @@ public class AllShapes extends JFrame implements Runnable {
     static int R, G, B;
 
     public AllShapes(int screenWidth, int screenHeight, int howManyStars, int starSize) {
-        super("CS211- Fall 2025");
+        super("CS211 All Shapes - Winter 2026");
         setBounds(100, 100, width, height);
         setResizable(false);
         setVisible(true);
@@ -163,7 +163,6 @@ public class AllShapes extends JFrame implements Runnable {
     }
 
     private void drawAShape(Graphics g, int sx, int sy, int size, int angle, int index){
-        System.out.println(size);
         switch(index % 3) {
             case 0 -> drawStar(g, sx, sy, size, angle);
             case 1 -> drawTriangle(g, sx, sy, size, angle);
