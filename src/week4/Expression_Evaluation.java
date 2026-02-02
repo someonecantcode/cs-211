@@ -1,7 +1,7 @@
 package week4;
 
-import java.util.Stack;
 import java.util.HashMap;
+import java.util.Stack;
 
 public class Expression_Evaluation {
 
@@ -31,7 +31,7 @@ public class Expression_Evaluation {
         } // end for
 
         if(stack.size() != 1){
-            printError(' ', statement.length());
+            printError(stack.peek(), statement.length());
             valid = false;
         }
         return valid;
@@ -44,9 +44,8 @@ public class Expression_Evaluation {
     public static  HashMap<Character, String> loadErrorMessage() {
         HashMap<Character, String> errorMessage = new HashMap<>();
         errorMessage.put(' ', "^ Incomplete Expression");
-        errorMessage.put('{', "^ " + pair.get('}') + " expected");
-        errorMessage.put('(', "^ " + pair.get(')') + " expected");
-
+        errorMessage.put('{', "^ " + pair.get('{') + " expected");
+        errorMessage.put('(', "^ " + pair.get('(') + " expected");
         return errorMessage;
     }
 
@@ -54,6 +53,10 @@ public class Expression_Evaluation {
         HashMap<Character, Character> pair = new HashMap<>();
         pair.put(')', '(');
         pair.put('}', '{');
+
+        // closing pairs
+        pair.put('(', ')');
+        pair.put('{', '}');
         return pair;
     }
 
