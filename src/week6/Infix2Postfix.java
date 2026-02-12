@@ -18,10 +18,9 @@ public class Infix2Postfix {
             char c = infix.charAt(j);
             if (Character.isDigit(c)) {
                 postfix += c;
-            }
-
-            if (j + 1 >= infix.length() || !Character.isDigit(infix.charAt(j + 1))) {
-                postfix += " ";
+                if (j + 1 >= infix.length() || !Character.isDigit(infix.charAt(j + 1))) {
+                    postfix += " ";
+                }
             }
 
             if (c == '(' || c == '{') {
@@ -37,7 +36,7 @@ public class Infix2Postfix {
             }
 
             if (operators.contains(c)) {
-                while(!stack.isEmpty() && (precedence.get(stack.peek())) >= (precedence.get(c))) {
+                while (!stack.isEmpty() && (precedence.get(stack.peek())) >= (precedence.get(c))) {
                     postfix += stack.pop();
                     postfix += " ";
                 }
@@ -82,7 +81,7 @@ public class Infix2Postfix {
         hs.add('-');
         hs.add('*');
         hs.add('/');
-        
+
         return hs;
     }
 }
