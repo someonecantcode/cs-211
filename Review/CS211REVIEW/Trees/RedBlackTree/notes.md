@@ -22,7 +22,7 @@ For any 3 nodes, just take the midpoint and make it the branch and make the othe
 ![alt text](format1.png)
 
 Format 2:
-3 node + 1 red.  
+3 node + 1 red, just change color of root and 2nd level.
 ![alt text](format2.png)
 
 Process:
@@ -34,7 +34,7 @@ To be honest, the rules don't really make too much sense but the process should 
 3. Is it adjacent to another red? -> Format 1 or Format 2. -> Root should be BLACK.
 4. Repeat with each new node.
 
-EXCEPTION CASE (3 nodes connected to one):
+EXCEPTION CASE (3 nodes connected to one, treat it as format 1, the 3 node becomes recalculated and added):
 ![alt text](exception.png)
 
 So 2,4,6 are format 1 so we clearly choose 4 as the middle and make 2 and 5 the branching nodes.
