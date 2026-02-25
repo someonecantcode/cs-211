@@ -5,7 +5,7 @@ import java.util.Random;
 
 public class myHeap {
 
-	   final static int HOW_MANY_TESTs = 20;
+	   final static int HOW_MANY_TESTs = 5;
 	   
 	   public static void main(String[] args) {
 		   
@@ -17,7 +17,8 @@ public class myHeap {
 	        for (int test = 1; test <= HOW_MANY_TESTs; test++) {
 	        	
 	        	System.out.println();        	
-	            int whatAction = random.nextInt(3); 
+	             int whatAction = random.nextInt(3); 
+				// int whatAction = 1;
 	            
 	            if (whatAction <= 1) { //add
 	            	

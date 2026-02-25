@@ -14,45 +14,51 @@ public class Heap211 {
 
    
    
-    /* project 3
+    // project 3
           
     int parent(int index) {
-        return . . .;
+        return index / 2;
     }
 
     
     int leftChild(int index) {
-        return . . .;
+        return index * 2;
     }
 
     
     int rightChild(int index) {
-        return . . .;
+        return leftChild(index) +  1;
     }
 
     
     boolean hasParent(int index) {
-        return . . .;
+        // 0 root leftroot rightroot
+        // 0  1      2       3
+        return index > 1;
     }
 
     
     boolean hasLeftChild(int index) {
-        return . . .;
+        return leftChild(index) < heap.size();
     }
 
     
     boolean hasRightChild(int index) {
-        return . . .;
+        return rightChild(index) < heap.size();
     }
         
     
     void swap(int a, int b) {
-        int temp = heap.get(a);
-        heap.set(a, heap.get(b));
-        heap.set(b,temp);
+        int aValue = heap.get(a);
+        int bValue = heap.get(b);
+    
+        heap.set(a, bValue);
+        heap.set(b,aValue);
+
+        System.out.printf("%10s %d<->%d %n", "swap", aValue, bValue);
     }
 
-    */
+    // 
     
     
 
@@ -100,11 +106,12 @@ public class Heap211 {
 
 
            	
-       	// project 3
-       	/*
-           implement bubbling-up here
-           
-        */
+       	// project 3 implement bubbling-up here
+        int addedValueindex = heap.size() - 1;
+       	while(hasParent(addedValueindex) && value < heap.get(parent(addedValueindex))) {
+            swap(addedValueindex, parent(addedValueindex));
+            addedValueindex = parent(addedValueindex);
+        }
        	
         System.out.println("   bubble-up: end");
     	System.out.println("   new heap: " +printHeap());
