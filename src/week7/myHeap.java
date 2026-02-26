@@ -14,9 +14,9 @@ import java.util.Random;
  */
 public class myHeap {
 
-    final static int HOW_MANY_TESTS = 20;
+    final static int HOW_MANY_TESTS = 50;
     final static int RNG = 3; // higher more likely to add
-
+    final static binaryTreePrinter printer = new binaryTreePrinter(2);
     public static void main(String[] args) {
 
         System.out.println("Project 3. MinHeap (Winter 2026) \n");
@@ -41,10 +41,17 @@ public class myHeap {
                     continue; // We don't need to print out a line if we're doing nothing.
                 }
             }
+
+            if (!minHeap.isEmpty()) {
+               // System.out.println(minHeap.heap.subList(1, minHeap.heap.size()));
+               // System.out.println(minHeap.heap.size());
+
+                printer.printBinaryTree(minHeap.heap.subList(1, minHeap.heap.size()));
+            }
             System.out.println();
         }
-
-		binaryTreePrinter.printBinaryTree(minHeap.heap, 2);
+        
+		
     }
 
 }
