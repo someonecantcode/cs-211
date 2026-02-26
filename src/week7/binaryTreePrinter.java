@@ -9,7 +9,11 @@ public class binaryTreePrinter {
 
     /**
      *
-     * _______X______ depth 2 _ _X_ _ _ _X__ depth 1 _X_ _X _X_ _X_ depth 0
+     * _______X______ depth 2
+     *
+     * _ _X_ _ _ _X__ depth 1
+     *
+     * _X_ _X _X_ _X_ depth 0
      */
     public static <T> void printBinaryTree(ArrayList<T> binaryArrayList, int numberofdigits) {
         if (binaryArrayList.isEmpty()) {
@@ -20,16 +24,18 @@ public class binaryTreePrinter {
             System.out.println(" " + binaryArrayList.get(0) + " ");
             return;
         }
-        SPACER = SPACER.repeat(numberofdigits);
+        SPACER = SPACER.repeat(numberofdigits); //scale it with magnitude
 
         int indexnumber = 0;
         int totalDepth = calculateDepth(binaryArrayList.size());
+
+        // all depths except last. follows block pattern 
+        // block = SPACER item SPACER 
+        // block |scaled space| (do it for n items per each depth level)
         for (int depth = totalDepth; depth > 0; depth--) {
             String spaces = SPACER.repeat(spacesFormula(depth));
             int items = itemsperDepth(totalDepth, depth);
 
-            // System.out.printf("depth %d:", depth);
-            // System.out.printf("items %d:", items);
             for (int i = 0; i < items; i++) {
                 printBlock(spaces, binaryArrayList.get(indexnumber), numberofdigits);
                 indexnumber++;
@@ -38,10 +44,10 @@ public class binaryTreePrinter {
             System.out.println();
         }
 
+        // last layer X_X_X_X_ 
         System.out.print(binaryArrayList.get(indexnumber));
         indexnumber++;
         for (; indexnumber < binaryArrayList.size(); indexnumber++) {
-            //    System.out.printf("size: %d, current_index: %d", binaryArrayList.size(), indexnumber);
             String formatString = "%s%" + numberofdigits + "s";
             System.out.printf(formatString, SPACER, binaryArrayList.get(indexnumber));
         }
@@ -53,16 +59,17 @@ public class binaryTreePrinter {
     }
 
     private static int itemsperDepth(int totalDepth, int depth) {
-        // 2^(reversedDepth)
         int reversedDepth = (totalDepth - depth);
         return (int) Math.pow(2, reversedDepth);
     }
 
-    private static int spacesFormula(int depth) { // a_n = 2^{n} -1. depth 3-> (2*3 - 1)
+    private static int spacesFormula(int depth) {
+        // closed form a_n = 2^{n} -1. depth 3-> (2*3 - 1)
+        // recursive form a_n = 2(a_{n-1}) + 1
         return (int) Math.pow(2, depth) - 1;
     }
 
-    private static <T> int calculateDepth(int index) {
+    private static <T> int calculateDepth(int index) { // floor(log2 index)
         return (int) (logbase2(index));
     }
 
