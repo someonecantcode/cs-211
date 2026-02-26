@@ -2,16 +2,27 @@ package week7;
 
 import java.util.ArrayList;
 
-//Winter 2026
+/**
+ * Winter 2026
+ *
+ * These are all of the methods for the minHeap. It handles all of the adding
+ * and removing methods alongside its helper functions and initilization.
+ *
+ * @author Brendan Tea
+ * @date 2026-02-25 
+ * 
+ */
 public class Heap211 {
 
-    static public ArrayList<Integer> heap = new ArrayList<>();
+    // shouldn't be static as you may want multiple instances of heaps.
+    public ArrayList<Integer> heap = new ArrayList<>();
 
     Heap211() {
         heap.add(0);  // must understan why we need add(0)
     }
 
     // project 3
+    // parent, left/right child are just pattern formulas given.
     int parent(int index) {
         return index / 2;
     }
@@ -24,12 +35,13 @@ public class Heap211 {
         return leftChild(index) + 1;
     }
 
-    boolean hasParent(int index) {
-        // 0 root leftroot rightroot
-        // 0  1      2       3
-        return index > 1;
-    }
-
+    // this is redudant due to isEmpty() method
+    // boolean hasParent(int index) { // literally checking if root exists
+    //     // 0 root leftroot rightroot
+    //     // 0  1      2       3
+    //     return index > 1;
+    // }
+    // checking if indices are in range
     boolean hasLeftChild(int index) {
         return leftChild(index) < heap.size();
     }
@@ -48,11 +60,9 @@ public class Heap211 {
         System.out.printf("%10s %d<->%d %n", "swap", aValue, bValue);
     }
 
-    // 
     /////////////////////////////////////////////////
 
     // CP 16: MISSON 1 
-
     
     int peekMin() {
         return heap.get(1);
@@ -61,21 +71,14 @@ public class Heap211 {
     // end of MISSON 1 
     //////////////////////////////////////
 
-
-
     boolean isEmpty() {
         return heap.size() == 1;
     }
 
     void add(int value) {
-
         /////////////////////////////////////////
-
     	// CP 16: MISSON 2 
-
-    	
-         heap.add(value); // add as rightmost leaf
-
+        heap.add(value); // add as rightmost leaf
         // end of MISSON 2 
         ////////////////////////////////////////
 
@@ -83,11 +86,7 @@ public class Heap211 {
         System.out.println("   bubble-up: start");
 
         // project 3 implement bubbling-up here
-        int addedValueIndex = heap.size() - 1;
-        while (hasParent(addedValueIndex) && value < heap.get(parent(addedValueIndex))) {
-            swap(addedValueIndex, parent(addedValueIndex));
-            addedValueIndex = parent(addedValueIndex);
-        }
+        bubbleUp(value);
 
         System.out.println("   bubble-up: end");
         System.out.println("   new heap: " + printHeap());
@@ -100,7 +99,6 @@ public class Heap211 {
 
     	// CP 16: MISSON 3  
 
-    	
     	int min = peekMin();  // peek min value by calling peekMin()
         int lastelement = heap.get(heap.size() - 1);
 
@@ -116,7 +114,6 @@ public class Heap211 {
         System.out.println("   bubble-down: start");
 
         // project 3 implement bubbling-down here
-
         bubbleDown();
         //
         System.out.println("   bubble-down: end");
@@ -125,13 +122,27 @@ public class Heap211 {
         return min;
     }
 
+    void bubbleUp(int value) {
+        if (isEmpty()) {
+            return;
+        }
+
+        int addedValueIndex = heap.size() - 1;
+        while (value < heap.get(parent(addedValueIndex))) {
+            swap(addedValueIndex, parent(addedValueIndex));
+            addedValueIndex = parent(addedValueIndex);
+        }
+    }
+
     void bubbleDown() {
-        if (isEmpty()) return;
+        if (isEmpty()) {
+            return;
+        }
 
         int removedValueIndex = 1;
-        while(heap.get(removedValueIndex) > heap.get(getMinChildIndex(removedValueIndex))) {
+        while (heap.get(removedValueIndex) > heap.get(getMinChildIndex(removedValueIndex))) {
             int swapIndex = getMinChildIndex(removedValueIndex);
-            
+
             swap(removedValueIndex, swapIndex);
             removedValueIndex = swapIndex;
         }
@@ -146,7 +157,7 @@ public class Heap211 {
         // assume its left. -> only swap to right if there exists right and right is greater.
 
         int minChild = leftChild(index);
-        if(hasRightChild(index) && (heap.get(rightChild(index)) < heap.get(minChild))) {
+        if (hasRightChild(index) && (heap.get(rightChild(index)) < heap.get(minChild))) {
             return rightChild(index);
         }
         return minChild;
