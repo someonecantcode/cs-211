@@ -55,7 +55,8 @@ public class binaryTreePrinter {
         System.out.print(binaryArrayList.get(indexnumber));
         indexnumber++;
         for (; indexnumber < binaryArrayList.size(); indexnumber++) {
-            System.out.print(SPACER + binaryArrayList.get(indexnumber));
+            String whichspace = (indexnumber % 2) == 0 ? SPACER : SPACER_ALTERNATE;
+            System.out.print(whichspace + binaryArrayList.get(indexnumber));
         }
     }
 

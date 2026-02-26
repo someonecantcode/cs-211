@@ -14,7 +14,7 @@ import java.util.Random;
  */
 public class myHeap {
 
-    final static int HOW_MANY_TESTS = 50;
+    final static int HOW_MANY_TESTS = 20;
     final static int RNG = 3; // higher more likely to add
     final static binaryTreePrinter printer = new binaryTreePrinter(2);
     public static void main(String[] args) {

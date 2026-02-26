@@ -52,8 +52,10 @@ To reduce hash collisions, you'll notice that it is best to use a prime number. 
 
 
 ## Hash Collisions
+> adding + searching 
 
 * Linear Probing: Moves to the next available index (wraps if needed).​
+> TERRIBLE FOR SEARCHING
 
 ![linear probing](linear.png)
 
