@@ -1,17 +1,17 @@
+package week7;
 
 import java.util.ArrayList;
 import java.util.List;
 
 public class binaryTreePrinter {
-    private static final String SPACER = "_";
+
+    private static String SPACER = "_";
+
     /**
      *
-     * _______X______ depth 2
-     * _ _X_ _ _ _X__ depth 1
-     * _X_ _X _X_ _X_ depth 0
+     * _______X______ depth 2 _ _X_ _ _ _X__ depth 1 _X_ _X _X_ _X_ depth 0
      */
-
-    public static <T> void printBinaryTree(ArrayList<T> binaryArrayList) {
+    public static <T> void printBinaryTree(ArrayList<T> binaryArrayList, int numberofdigits) {
         if (binaryArrayList.isEmpty()) {
             return;
         }
@@ -20,6 +20,7 @@ public class binaryTreePrinter {
             System.out.println(" " + binaryArrayList.get(0) + " ");
             return;
         }
+        SPACER = SPACER.repeat(numberofdigits);
 
         int indexnumber = 0;
         int totalDepth = calculateDepth(binaryArrayList.size());
@@ -27,30 +28,31 @@ public class binaryTreePrinter {
             String spaces = SPACER.repeat(spacesFormula(depth));
             int items = itemsperDepth(totalDepth, depth);
 
-           // System.out.printf("depth %d:", depth);
-           // System.out.printf("items %d:", items);
-
+            // System.out.printf("depth %d:", depth);
+            // System.out.printf("items %d:", items);
             for (int i = 0; i < items; i++) {
-                printBlock(spaces, binaryArrayList.get(indexnumber));
+                printBlock(spaces, binaryArrayList.get(indexnumber), numberofdigits);
                 indexnumber++;
-                System.out.print(" ");
+                System.out.print(" ".repeat(numberofdigits));
             }
             System.out.println();
         }
 
         System.out.print(binaryArrayList.get(indexnumber));
         indexnumber++;
-        for(; indexnumber < binaryArrayList.size(); indexnumber++){
-        //    System.out.printf("size: %d, current_index: %d", binaryArrayList.size(), indexnumber);
-            System.out.print(SPACER + binaryArrayList.get(indexnumber));
+        for (; indexnumber < binaryArrayList.size(); indexnumber++) {
+            //    System.out.printf("size: %d, current_index: %d", binaryArrayList.size(), indexnumber);
+            String formatString = "%s%" + numberofdigits + "s";
+            System.out.printf(formatString, SPACER, binaryArrayList.get(indexnumber));
         }
     }
 
-    private static <T> void printBlock(String spaces, T value) {
-        System.out.print(spaces + value + spaces);
+    private static <T> void printBlock(String spaces, T value, int numberofdigits) {
+        String formatString = "%s%" + numberofdigits + "s%s";
+        System.out.printf(formatString, spaces, value, spaces);
     }
 
-    private static int itemsperDepth(int totalDepth, int depth) { 
+    private static int itemsperDepth(int totalDepth, int depth) {
         // 2^(reversedDepth)
         int reversedDepth = (totalDepth - depth);
         return (int) Math.pow(2, reversedDepth);
@@ -69,8 +71,8 @@ public class binaryTreePrinter {
     }
 
     public static void main(String[] args) {
-        ArrayList<Integer> al = new ArrayList<>(List.of(1, 2, 3, 4, 5, 6, 7, 8, 9, 10 ,11));
-       // System.out.println(al.get(al.size()-1));
-        printBinaryTree(al);
+        ArrayList<Integer> al = new ArrayList<>(List.of(1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11));
+        // System.out.println(al.get(al.size()-1));
+        printBinaryTree(al, 2);
     }
 }

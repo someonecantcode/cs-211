@@ -44,6 +44,7 @@ public class myHeap {
             System.out.println();
         }
 
+		binaryTreePrinter.printBinaryTree(minHeap.heap, 2);
     }
 
 }
