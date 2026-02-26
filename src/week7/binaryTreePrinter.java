@@ -6,9 +6,9 @@ public class binaryTreePrinter {
     private static final String SPACER = "_";
     /**
      *
-     * _______X______ depth 3
-     * _ _X_ _ _ _X__ depth 2
-     * _X_ _X _X_ _X_ depth 1
+     * _______X______ depth 2
+     * _ _X_ _ _ _X__ depth 1
+     * _X_ _X _X_ _X_ depth 0
      */
 
     public static <T> void printBinaryTree(ArrayList<T> binaryArrayList) {
@@ -23,7 +23,7 @@ public class binaryTreePrinter {
 
         int indexnumber = 0;
         int totalDepth = calculateDepth(binaryArrayList.size());
-        for (int depth = totalDepth; depth > 1; depth--) {
+        for (int depth = totalDepth; depth > 0; depth--) {
             String spaces = SPACER.repeat(spacesFormula(depth));
             int items = itemsperDepth(totalDepth, depth);
 
@@ -51,17 +51,17 @@ public class binaryTreePrinter {
     }
 
     private static int itemsperDepth(int totalDepth, int depth) { 
-        // 2^(reversedDepth - 1)
+        // 2^(reversedDepth)
         int reversedDepth = (totalDepth - depth);
         return (int) Math.pow(2, reversedDepth);
     }
 
-    private static int spacesFormula(int depth) { // a_n = 2^{n-1} -1. 3-> (2*3 + 1)
-        return (int) Math.pow(2, depth - 1) - 1;
+    private static int spacesFormula(int depth) { // a_n = 2^{n} -1. depth 3-> (2*3 - 1)
+        return (int) Math.pow(2, depth) - 1;
     }
 
     private static <T> int calculateDepth(int index) {
-        return (int) (logbase2(index) + 1);
+        return (int) (logbase2(index));
     }
 
     private static double logbase2(double input) {
