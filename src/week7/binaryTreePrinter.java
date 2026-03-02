@@ -38,8 +38,8 @@ public class binaryTreePrinter {
         int totalDepth = calculateDepth(binaryArrayList.size());
 
         // all depths except last. follows block pattern 
-        // block = SPACER item SPACER 
-        // block |scaled space| (do it for n items per each depth level)
+        // block = SPACER item SPACER + scaled_whitespace
+        // block  (n times for n items per each depth level)
         for (int depth = totalDepth; depth > 0; depth--) {
             String spaces = SPACER.repeat(spacesFormula(depth));
             int items = itemsperDepth(totalDepth, depth);
