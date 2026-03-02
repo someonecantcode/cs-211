@@ -3,10 +3,12 @@ package week9;
 import java.util.Scanner;
 
 class tNode {
+
     public boolean isEnd;
     public tNode[] child = new tNode[26]; // for 26 chars in the alphabet
 
     public static void addWord(tNode root, String word) {
+        word = word.toLowerCase();
         for (int j = 0; j < word.length(); j++) { // for each letter of the word
             char c = word.charAt(j); // character at each index
 
@@ -25,6 +27,7 @@ class tNode {
     }
 
     public static boolean searchWord(tNode root, String word) {
+        word = word.toLowerCase();
         boolean isFound = true;
         for (int i = 0; i < word.length(); i++) {
             char c = word.charAt(i);
@@ -62,6 +65,7 @@ class tNode {
 
     public static void prefixWord(tNode root, String preFix) {
         tNode t = root;
+        preFix = preFix.toLowerCase();
         System.out.println("prefix: " + preFix);
 
         for (int i = 0; i < preFix.length(); i++) {
@@ -77,16 +81,16 @@ class tNode {
 }
 
 public class Trie211 {
+
     public static void main(String[] args) {
         Scanner scan = new Scanner(System.in);
 
         tNode root = new tNode();
         String[] words = {"help", "hambuger", "ham", "hem", "huge", "hug", "hen"};
         // add words
-        for(String word : words) {
+        for (String word : words) {
             tNode.addWord(root, word);
         }
-        
 
         // print all the words
         System.out.println("List of words");
@@ -94,9 +98,14 @@ public class Trie211 {
         System.out.println();
 
         //ask user for a prefix
-        System.out.print("Input your prefix: ");
-        String prefix = scan.next();
-        tNode.prefixWord(root, prefix); // print every word starting with "hel".
+        String prefix;
+        do {
+            System.out.print("\nInput your prefix: ");
+            prefix = scan.next();
+            tNode.prefixWord(root, prefix); // print every word starting with "prefix"
+        } while (prefix.length() > 0);
+
+       
 
         // test if the word is in the tree
         System.out.println(tNode.searchWord(root, "has"));
