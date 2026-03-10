@@ -101,9 +101,12 @@ public class Trie211 {
         String prefix;
         do {
             System.out.print("\nInput your prefix: ");
-            prefix = scan.next();
+            prefix = scan.nextLine();
+            if (prefix.equals(" ")) {
+                break;
+            }
             tNode.prefixWord(root, prefix); // print every word starting with "prefix"
-        } while (prefix.length() > 0);
+        } while (true);
 
        
 

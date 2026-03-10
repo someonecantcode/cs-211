@@ -134,3 +134,8 @@ def buildTree(self, preorder: List[int], oinorder: List[int]) -> TreeNode:
 
 Start at the root and do comparisons, moving left or right, until you reach the final node. MUST BE A BINARY SEARCH TREE.
 ![searching for a number in search tree](search.png)
+
+# Removing
+
+Take the left subtree most right
+Take the right subtree most left.
